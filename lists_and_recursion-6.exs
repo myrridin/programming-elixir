@@ -6,8 +6,8 @@ defmodule MyList do
 
   def _flatten([], flattened_list), do: flattened_list
 
-  def _flatten([inner_list = [_ | _] | tail], flattened_list) do
-    _flatten(tail, _flatten(inner_list, flattened_list))
+  def _flatten([list | tail], flattened_list) when is_list(list) do
+    _flatten(tail, _flatten(list, flattened_list))
   end
 
   def _flatten([head | tail], flattened_list) do
